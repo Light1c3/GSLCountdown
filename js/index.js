@@ -1,6 +1,6 @@
 // GSL Dates
 let GSL = [
-  { time: moment('02-15-2019 06:00') },
+  { time: moment('02-14-2019 06:00') },
   { time: moment('02-15-2019 23:00') },
   { time: moment('02-20-2019 04:30') },
   { time: moment('02-21-2019 06:00') },
@@ -42,10 +42,11 @@ var Countdown = {
     // Init countdown values
     const days = Math.floor(GSLDiff / 60 / 60 / 24)
     const hours = Math.floor(GSLDiff / 60 / 60 - 24 * days)
-    const minutes = Math.floor(GSLDiff / 60 - 60 * hours)
-    const seconds = GSLDiff - 60 * minutes - 3600 * hours
+    const minutes = Math.floor(GSLDiff / 60 - 60 * hours - 24 * days * 60)
+    const seconds = GSLDiff - 60 * minutes - 3600 * hours - 86400 * days
 
-    console.log(hours)
+    console.log(seconds)
+    console.log(minutes, 'Minutes')
     console.log(GSLDiff)
 
     this.values = {
@@ -88,7 +89,7 @@ var Countdown = {
         }
 
         if (that.values.days >= 0 && that.values.hours < 0) {
-          that.values.hours = 59
+          that.values.hours = 23
           --that.values.days
         }
 
