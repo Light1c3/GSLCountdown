@@ -47,7 +47,8 @@ var Countdown = {
 
     console.log(seconds)
     console.log(minutes, 'Minutes')
-    console.log(GSLDiff)
+    console.log(hours, 'hours')
+    console.log(days, 'days')
 
     this.values = {
       days: days,
