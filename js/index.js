@@ -45,7 +45,8 @@ var Countdown = {
     const minutes = Math.floor(GSLDiff / 60 - 60 * hours)
     const seconds = GSLDiff - 60 * minutes - 3600 * hours
 
-    console.log(GSLDiff / 60 / 60 / 24)
+    console.log(hours)
+    console.log(GSLDiff)
 
     this.values = {
       days: days,
