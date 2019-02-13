@@ -1,6 +1,6 @@
 // GSL Dates
 let GSL = [
-  { time: moment('02-14-2019 06:00') },
+  { time: moment('02-15-2019 06:00') },
   { time: moment('02-15-2019 23:00') },
   { time: moment('02-20-2019 04:30') },
   { time: moment('02-21-2019 06:00') },
@@ -15,13 +15,10 @@ let GSL = [
 let i = 0
 let GSLDiff = -1
 while (GSLDiff < 0) {
-  console.log(GSLDiff, 'GSL')
-  console.log(i, 'I')
+  console.log(i)
   GSLDiff = GSL[i].time.diff(moment(), 'seconds')
-  console.log(GSLDiff)
   i++
 }
-console.log(GSLDiff)
 
 // Create Countdown
 var Countdown = {
@@ -36,17 +33,22 @@ var Countdown = {
   init: function() {
     // DOM
     this.$ = {
+      days: this.$el.find('.bloc-time.days .figure'),
       hours: this.$el.find('.bloc-time.hours .figure'),
       minutes: this.$el.find('.bloc-time.min .figure'),
       seconds: this.$el.find('.bloc-time.sec .figure')
     }
 
     // Init countdown values
-    const hours = Math.floor(GSLDiff / 60 / 60)
+    const days = Math.floor(GSLDiff / 60 / 60 / 24)
+    const hours = Math.floor(GSLDiff / 60 / 60 - 24 * days)
     const minutes = Math.floor(GSLDiff / 60 - 60 * hours)
     const seconds = GSLDiff - 60 * minutes - 3600 * hours
 
+    console.log(GSLDiff / 60 / 60 / 24)
+
     this.values = {
+      days: days,
       hours: hours,
       minutes: minutes,
       seconds: seconds
@@ -61,6 +63,8 @@ var Countdown = {
 
   count: function() {
     var that = this,
+      $day_1 = this.$.days.eq(0),
+      $day_2 = this.$.days.eq(1),
       $hour_1 = this.$.hours.eq(0),
       $hour_2 = this.$.hours.eq(1),
       $min_1 = this.$.minutes.eq(0),
@@ -82,7 +86,15 @@ var Countdown = {
           --that.values.hours
         }
 
+        if (that.values.days >= 0 && that.values.hours < 0) {
+          that.values.hours = 59
+          --that.values.days
+        }
+
         // Update DOM values
+        // Days
+        that.checkHour(that.values.days, $day_1, $day_2)
+
         // Hours
         that.checkHour(that.values.hours, $hour_1, $hour_2)
 
@@ -100,7 +112,8 @@ var Countdown = {
       if (
         that.values.seconds === 0 &&
         that.values.minutes === 0 &&
-        that.values.hours === 0
+        that.values.hours === 0 &&
+        that.values.days === 0
       ) {
         window.location.href = 'https://www.twitch.tv/gsl'
       }
