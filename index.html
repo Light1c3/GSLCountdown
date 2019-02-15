@@ -130,10 +130,26 @@
       <div class="info-section">
         <div class="info-container">
           <div class="schedule">
-            <h1><strong>O</strong>Ther Events</h1>
+            <h1><strong>U</strong>pcoming Events</h1>
             <div id="eventWrapper">
-              <div id="EventCards" class="inline-block-center"></div>
+              <div id="EventCards"></div>
             </div>
+          </div>
+        </div>
+      </div>
+      <div id="modal" class="alert-modal">
+        <div class="modal-content">
+          <h1>GSL Is Currently Streaming!!!</h1>
+          <h2>Do you want to go to twitch?</h2>
+          <div>
+            <button onclick="window.location.href=`https://twitch.tv/gsl`">
+              Yes
+            </button>
+            <button
+              onclick="document.getElementById('modal').style.display = 'none'"
+            >
+              No
+            </button>
           </div>
         </div>
       </div>

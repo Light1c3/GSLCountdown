@@ -3,16 +3,18 @@
 /* ============================================================================================================ */
 
 #EventCards {
+  width: 300px;
   align-content: center;
   min-height: 375px;
   overflow-y: hidden;
   display: flex;
   margin: auto;
   overflow: hidden;
+  position: relative;
 }
 
 .eventWrapper {
-  width: 100%;
+  position: relative;
   overflow: hidden;
   overflow-x: auto;
   overflow-y: hidden;

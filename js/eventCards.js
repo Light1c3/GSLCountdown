@@ -2,7 +2,7 @@ const Root = 'https://www.googleapis.com/calendar/v3/calendars/'
 const calendarID = '162osjakh2mr7594d7fsk37lat3juf60@import.calendar.google.com'
 const APIKey = 'AIzaSyDXGT6tr7HSR37T2TQ-KZFYeWDGRUzAfds'
 
-let maxResults = 4
+let maxResults = 2
 let numberOfEvents = 0
 let currectDate = new Date().toISOString()
 let EventsDiv = document.getElementById('EventCards')
@@ -17,10 +17,12 @@ $(document).ready(function() {
       '&timeMin=' +
       currectDate +
       '&singleEvents=true&orderBy=startTime' +
+      '&q=GSL' +
       '&key=' +
       APIKey,
     method: 'GET'
   }).then(function(data) {
+    events = data.items
     let items = data.items
     numberOfEvents = items.length
     for (let i = 0; i < items.length; i++) {
@@ -47,7 +49,7 @@ $(document).ready(function() {
         getEventEndTime(endTime, items[i].end) +
         `</p>
                                     ` +
-        getEventDisc(items[i].description) +
+        getEventDesc(items[i].description) +
         `
                                 </div>
                             </div>
@@ -64,11 +66,7 @@ $(document).ready(function() {
   })
 })
 
-$(window).resize(function() {
-  $('#log').append('<div>Handler for .resize() called.</div>')
-})
-
-function getEventDisc(disc) {
+function getEventDesc(disc) {
   if (disc == null) {
     return ''
   } else {
