@@ -4,7 +4,7 @@
 
 #EventCards {
   align-content: center;
-  min-height: 175px;
+  min-height: 375px;
   overflow-y: hidden;
   display: flex;
   margin: auto;
@@ -20,18 +20,17 @@
   margin-right: auto;
 }
 
-.startDate {
-  margin-bottom: 0;
-}
-
 .card {
-  background-color: #2b59a2;
+  background-color: #242f40;
   width: 25%;
   margin-bottom: 1em;
-  color: #06214c;
-  font-size: 1.5em;
+  color: #8ca9d6;
   overflow: hidden;
   display: inline;
+  max-width: 400px;
+  max-height: 300px;
+  min-width: 300px;
+  min-height: 300px;
   position: relative;
   margin-left: auto;
   margin-right: auto;
@@ -40,11 +39,22 @@
   transition: box-shadow 300ms ease-in;
   box-shadow: 10px 10px 8px 0 rgba(0, 0, 0, 0.2);
 }
+
+.event-description {
+  padding: 1em;
+}
+.event-description a {
+  color: red;
+}
+
 .card:hover {
   box-shadow: 20px 20px 16px 0 rgba(0, 0, 0, 0.2);
 }
+.addEvent-btn {
+  color: white;
+  float: right;
+}
 .text--container {
-  line-height: 130px;
   padding: 20px;
   padding-top: 10px;
 }
