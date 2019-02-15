@@ -39,7 +39,7 @@ $(document).ready(function() {
                                   items[i].htmlLink
                                 }" target="_blank"><i class="fas fa-calendar-plus"></i></a>
                                 <h2 class="text--title">` +
-        items[i].summary +
+        items[i].summary.substring(0, items[i].summary.length - 14) +
         `</h2>
                                     <p>` +
         getEventDate(startTime) +
