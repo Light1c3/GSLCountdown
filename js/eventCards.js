@@ -73,7 +73,7 @@ function getEventDesc(disc) {
     let websiteURL = disc.match(/\bhttps?:\/\/\S+/gi)
     let description = disc.replace(websiteURL, '')
 
-    return `<div"><p> ${description}</p><div class="event-description"><a href="${websiteURL}">Event Website</a></div></div>`
+    return `<div class="event-description"><p> ${description}</p><div class="event-link"><a href="${websiteURL}">Event Website</a></div></div>`
   }
 }
 

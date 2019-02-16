@@ -42,11 +42,21 @@
   box-shadow: 10px 10px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
-.event-description {
+.event-description p {
+  margin-bottom: 3em;
+}
+
+.event-link {
   padding: 1em;
 }
-.event-description a {
-  color: red;
+.event-link p {
+  margin-bottom: 1em;
+}
+.event-link a {
+  margin-top: 10%;
+  padding: 10px 15px;
+  background-color: #5c79a6;
+  border-radius: 25px;
 }
 
 .card:hover {
