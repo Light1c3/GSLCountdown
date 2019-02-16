@@ -1,10 +1,10 @@
 const Root = 'https://www.googleapis.com/calendar/v3/calendars/'
-const calendarID = '162osjakh2mr7594d7fsk37lat3juf60@import.calendar.google.com'
+const calendarID = 'lb4oacuhcit3fubqvjnv3lefgs@group.calendar.google.com'
 const APIKey = 'AIzaSyDXGT6tr7HSR37T2TQ-KZFYeWDGRUzAfds'
+const currentDate = moment().toISOString()
 
 let maxResults = 2
 let numberOfEvents = 0
-let currectDate = new Date().toISOString()
 let EventsDiv = document.getElementById('EventCards')
 
 $(document).ready(function() {
@@ -15,8 +15,9 @@ $(document).ready(function() {
       '/events?maxResults=' +
       maxResults +
       '&timeMin=' +
-      currectDate +
-      '&singleEvents=true&orderBy=startTime' +
+      currentDate +
+      '&singleEvents=true' +
+      '&orderBy=startTime' +
       '&q=GSL' +
       '&key=' +
       APIKey,
@@ -39,7 +40,7 @@ $(document).ready(function() {
                                   items[i].htmlLink
                                 }" target="_blank"><i class="fas fa-calendar-plus"></i></a>
                                 <h2 class="text--title">` +
-        items[i].summary.substring(0, items[i].summary.length - 14) +
+        items[i].summary +
         `</h2>
                                     <p>` +
         getEventDate(startTime) +
@@ -56,11 +57,6 @@ $(document).ready(function() {
                         </div>
                 </li>`
       EventsDiv.innerHTML += card
-    }
-    for (let i = 0; i < data.items.length; i++) {
-      if (data.items[i].location != null) {
-        mapInitilization(data.items[i].location, [i])
-      }
     }
     EventsDiv.style.width = `${450 * data.items.length}px`
   })

@@ -8,7 +8,7 @@ $(document).ready(function() {
       '/events?maxResults=' +
       maxResults +
       '&timeMin=' +
-      currectDate +
+      currentDate +
       '&singleEvents=true&orderBy=startTime' +
       '&q=GSL' +
       '&key=' +
@@ -16,9 +16,11 @@ $(document).ready(function() {
     method: 'GET'
   })
     .then(function(data) {
+      console.log(currentDate)
+      event = data.items
       GSLDiff = moment(data.items[0].start.dateTime).diff(moment(), 'seconds')
 
-      console.log(moment(data.items[0].start.dateTime).toString())
+      console.log(moment(data.items[0].start.dateTime))
     })
     .then(function() {
       $.ajax({
