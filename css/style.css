@@ -9,7 +9,7 @@ body {
   top: 0;
   left: 0;
   /* The image used */
-  background-image: url('/img/sc2-background.webp');
+  background-image: url('https://github.com/Light1c3/GSLCountdown/blob/master/img/sc2-background.webp?raw=true');
 
   /* Full screen */
   height: 100%;
