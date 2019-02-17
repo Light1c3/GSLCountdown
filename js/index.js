@@ -24,7 +24,7 @@ $(document).ready(function() {
     })
     .then(function() {
       $.ajax({
-        url: `https://api.twitch.tv/kraken/streams?client_id=vzz8cdu9dujieeq84dp32wtik6mloz&channel=starcraft`,
+        url: `https://api.twitch.tv/kraken/streams?client_id=vzz8cdu9dujieeq84dp32wtik6mloz&channel=gsl`,
         method: 'GET'
       }).then(function(data) {
         if (data._total === 1) {
