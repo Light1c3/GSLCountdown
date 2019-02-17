@@ -8,21 +8,7 @@ let numberOfEvents = 0
 let EventsDiv = document.getElementById('EventCards')
 
 $(document).ready(function() {
-  $.ajax({
-    url:
-      Root +
-      calendarID +
-      '/events?maxResults=' +
-      maxResults +
-      '&timeMin=' +
-      currentDate +
-      '&singleEvents=true' +
-      '&orderBy=startTime' +
-      '&q=GSL' +
-      '&key=' +
-      APIKey,
-    method: 'GET'
-  }).then(function(data) {
+  getEvents().then(function(data) {
     events = data.items
     let items = data.items
     numberOfEvents = items.length

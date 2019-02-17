@@ -1,26 +1,10 @@
 let GSLDiff
 
 $(document).ready(function() {
-  $.ajax({
-    url:
-      Root +
-      calendarID +
-      '/events?maxResults=' +
-      maxResults +
-      '&timeMin=' +
-      currentDate +
-      '&singleEvents=true&orderBy=startTime' +
-      '&q=GSL' +
-      '&key=' +
-      APIKey,
-    method: 'GET'
-  })
+  getEvents()
     .then(function(data) {
-      console.log(currentDate)
       event = data.items
       GSLDiff = moment(data.items[0].start.dateTime).diff(moment(), 'seconds')
-
-      console.log(moment(data.items[0].start.dateTime))
     })
     .then(function() {
       $.ajax({
@@ -52,16 +36,10 @@ $(document).ready(function() {
           }
 
           // Init countdown values
-          console.log(GSLDiff)
           const days = Math.floor(GSLDiff / 60 / 60 / 24)
           const hours = Math.floor(GSLDiff / 60 / 60 - 24 * days)
           const minutes = Math.floor(GSLDiff / 60 - 60 * hours - 24 * days * 60)
           const seconds = GSLDiff - 60 * minutes - 3600 * hours - 86400 * days
-
-          console.log(seconds)
-          console.log(minutes, 'Minutes')
-          console.log(hours, 'hours')
-          console.log(days, 'days')
 
           this.values = {
             days: days,
