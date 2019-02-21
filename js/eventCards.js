@@ -1,10 +1,3 @@
-const Root = 'https://www.googleapis.com/calendar/v3/calendars/'
-const calendarID = 'lb4oacuhcit3fubqvjnv3lefgs@group.calendar.google.com'
-const APIKey = 'AIzaSyDXGT6tr7HSR37T2TQ-KZFYeWDGRUzAfds'
-const currentDate = moment().toISOString()
-
-let maxResults = 2
-let numberOfEvents = 0
 let EventsDiv = document.getElementById('EventCards')
 
 $(document).ready(function() {
