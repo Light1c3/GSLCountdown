@@ -28,7 +28,7 @@ function getEvents() {
 }
 
 function excludePastEvents(events) {
-  if (moment(events[0].start.dateTime).diff(moment(), 'minutes')) {
+  if (moment(events[0].start.dateTime).diff(moment(), 'minutes') < 0) {
     return events.shift()
   } else {
     return events.pop()
